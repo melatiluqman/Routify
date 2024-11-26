@@ -1,8 +1,8 @@
 # Routify
 
 ### Folder Structur Plan
-
-outify/
+```
+Routify/
 ├── env/                # Virtual environment (tidak dibuat secara manual, dibuat setelah membuat virtualenv)
 ├── migrations/         # Folder untuk file migrasi database
 ├── models/             # Folder untuk model database
@@ -25,3 +25,4 @@ outify/
 ├── app.py              # Main file untuk menjalankan aplikasi Flask
 ├── config.py           # File konfigurasi aplikasi
 └── requirements.txt    # Daftar dependensi Python
+```
