@@ -9,7 +9,6 @@ Routify/
 │   └── db.sqlite       # File database
 ├── migrations/         # Folder untuk file migrasi database (opsional)
 ├── models/             # Folder untuk model database (opsional??)
-│   ├── __init__.py     # Database initialization
 │   └── users.py        # Contoh model database
 ├── static/             # Folder untuk file statis (CSS, JS, gambar)
 │   ├── css/            # Folder untuk file CSS
