@@ -30,6 +30,6 @@ Routify/
 ├── .gitignore          # File untuk mengabaikan file tertentu di Git
 ├── app.py              # Main file untuk menjalankan aplikasi Flask
 ├── config.py           # File konfigurasi aplikasi
-└── requirements.txt    # Daftar dependensi Python
+└── requirements.txt    # Daftar dependensi Python (anggota team lain bisa mengisntal dependensi yang sama dengan cara: membuat virtualenv, mengaktifkan virtualenv, menjalakan perintah (pip install -r requirements.txt), menjalankan flask dengan perintah (flask run))
 
 ```
