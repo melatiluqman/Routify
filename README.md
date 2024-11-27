@@ -5,7 +5,7 @@
 Routify/
 ├── __pycache__/        # (dibuat secara otomatis setelah menjalankan program)
 ├── env/                # Virtual environment (dibuat secara otomatis setelah membuat virtualenv)
-├── instance/           # Folder untuk file sensitif (dibuat secara otomatis setelah menjalankan program, dan berhasil create akun di webnya)
+├── instance/           # Folder untuk file sensitif 
 │   └── db.sqlite       # File database
 ├── migrations/         # Folder untuk file migrasi database (opsional)
 ├── models/             # Folder untuk model database (opsional??)
