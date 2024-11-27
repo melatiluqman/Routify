@@ -3,7 +3,7 @@
 ### Folder Structur Plan
 ```
 Routify/
-├── __pycache__/                # (dibuat secara otomatis setelah menjalankan program)
+├── __pycache__/        # (dibuat secara otomatis setelah menjalankan program)
 ├── env/                # Virtual environment (dibuat secara otomatis setelah membuat virtualenv)
 ├── instance/           # Folder untuk file sensitif (dibuat secara otomatis setelah menjalankan program, dan berhasil create akun di webnya)
 │   └── db.sqlite       # File database
