@@ -31,3 +31,19 @@ Routify/
 └── requirements.txt    # Daftar dependensi Python (anggota team lain bisa mengisntal dependensi yang sama dengan cara: membuat virtualenv, mengaktifkan virtualenv, menjalakan perintah (pip install -r requirements.txt), menjalankan flask dengan perintah (flask run))
 
 ```
+
+## Halaman login dan register
+
+- Database user
+
+  ![image](https://github.com/user-attachments/assets/5c6ecf0f-a9c0-4c15-ae82-3c2feb966868)
+
+- Tampilan login
+
+  ![image](https://github.com/user-attachments/assets/4822be38-a926-4f0d-8e6b-39eda9602e22)
+
+- Tampilan Register
+
+  ![image](https://github.com/user-attachments/assets/00c4cb3c-a5ee-40f4-90f8-163842c5c3d7)
+
+
