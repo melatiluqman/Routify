@@ -10,7 +10,14 @@ body {
     justify-content: center;
     height: 100vh;
 }
-
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
 h1 {
     color: #007BFF;
 }
