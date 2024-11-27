@@ -3,7 +3,7 @@
 ## Folder Structur Plan
 ```
 Routify/
-├── __pycache__/        # (dibuat secara otomatis setelah menjalankan program)
+├── __pycache__/        # 
 ├── env/                # Virtual environment (dibuat secara otomatis setelah membuat virtualenv)
 ├── instance/           # Folder untuk file sensitif 
 │   └── db.sqlite       # File database
@@ -19,7 +19,7 @@ Routify/
 │   ├── base.html       # Template dasar untuk inheritance
 │   ├── home.html       # Halaman utama
 │   ├── login.html      # Halaman login
-│   └── sign_up.html    # Halaman registrasi
+│   └── register.html   # Halaman registrasi
 ├── tests/              # Folder untuk pengujian (opsional)
 │   └── test_app.py     # Contoh file unit test
 ├── utils/              # Folder untuk fungsi tambahan 
