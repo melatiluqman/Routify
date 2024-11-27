@@ -7,17 +7,45 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;  /* Membuat konten tidak terlalu berada di tengah */
     height: 100vh;
 }
-nav ul {
-    list-style: none;
-    padding: 0;
-}
-nav ul li {
-    display: inline;
-    margin: 0 10px;
-}
+
+
 h1 {
     color: #007BFF;
+    text-align: center;  /* Teks judul akan berada di tengah horizontal */
+    margin: 20px 0;       /* Memberikan jarak di atas dan bawah judul */
+    display: flex;
+    justify-content: center;  /* Mengatur teks di tengah horizontal */
+    align-items: center; 
 }
+
+
+nav {
+    width: 100%;
+    border-bottom: 2px solid #121213; /* Garis bawah navbar */
+    padding: 10px 0;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-end; /* Mengatur item navbar ke kanan */
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;  /* Memberikan jarak antar link */
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #007BFF;
+}
+
+nav ul li a:hover {
+    background-color: #0056b3;  /* Memberikan efek hover */
+}
+
