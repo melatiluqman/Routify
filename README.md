@@ -7,7 +7,6 @@ Routify/
 ├── env/                # Virtual environment (dibuat secara otomatis setelah membuat virtualenv)
 ├── instance/           # Folder untuk file sensitif 
 │   └── db.sqlite       # File database
-├── migrations/         # Folder untuk file migrasi database (opsional)
 ├── models/             # Folder untuk model database (opsional??)
 │   └── users.py        # Contoh model database
 ├── static/             # Folder untuk file statis (CSS, JS, gambar)
