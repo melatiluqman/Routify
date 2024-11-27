@@ -1,56 +1,79 @@
-from flask import Flask, render_template, request, url_for, redirect
-from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager, UserMixin, login_user, logout_user, current_user
+from flask import Flask, render_template, request, redirect, url_for, session
+from flask_mysqldb import MySQL
+import MySQLdb.cursors
+import re
+from config import Config
 
+# Initialize Flask app
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite"
-app.config["SECRET_KEY"] = "abc"
-db = SQLAlchemy()
+app.config.from_object(Config)
 
-login_manager = LoginManager()
-login_manager.init_app(app)
+# Initialize MySQL
+mysql = MySQL(app)
 
-class Users(UserMixin, db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(250), unique=True, nullable=False)
-    password = db.Column(db.String(250), nullable=False)
 
-db.init_app(app)
-
-with app.app_context():
-    db.create_all()
-
-@login_manager.user_loader
-def loader_user(user_id):
-    return Users.query.get(user_id)
-
-@app.route('/register', methods=["GET", "POST"])
-def register():
-    if request.method == "POST":
-        user = Users(username=request.form.get("username"),
-                     password=request.form.get("password"))
-        db.session.add(user)
-        db.session.commit()
-        return redirect(url_for("login"))
-    return render_template("sign_up.html")
-
-@app.route("/login", methods=["GET", "POST"])
+@app.route('/')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    if request.method == "POST":
-        user = Users.query.filter_by(username=request.form.get("username")).first()
-        if user and user.password == request.form.get("password"):
-            login_user(user)
-            return redirect(url_for("home"))
-    return render_template("login.html")
+    message = ''
+    if request.method == 'POST':
+        email = request.form.get('email')
+        password = request.form.get('password')
 
-@app.route("/logout")
+        if not email or not password:
+            message = 'Email and Password are required!'
+        else:
+            cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+            cursor.execute(
+                'SELECT * FROM user WHERE email = %s AND password = %s', (email, password))
+            user = cursor.fetchone()
+
+            if user:
+                session['loggedin'] = True
+                session['userid'] = user['userid']
+                session['name'] = user['name']
+                session['email'] = user['email']
+                return render_template('home.html')
+            else:
+                message = 'Invalid email or password!'
+
+    return render_template('login.html', message=message)
+
+
+@app.route('/logout')
 def logout():
-    logout_user()
-    return redirect(url_for("home"))
+    session.clear()
+    return redirect(url_for('login'))
 
-@app.route("/")
-def home():
-    return render_template("home.html", current_user=current_user)
 
-if __name__ == "__main__":
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    message = ''
+    if request.method == 'POST':
+        name = request.form.get('name')
+        email = request.form.get('email')
+        password = request.form.get('password')
+
+        # Validate input
+        if not name or not email or not password:
+            message = 'All fields are required!'
+        elif not re.match(r'[^@]+@[^@]+\.[^@]+', email):
+            message = 'Invalid email format!'
+        else:
+            cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+            cursor.execute('SELECT * FROM user WHERE email = %s', (email,))
+            account = cursor.fetchone()
+
+            if account:
+                message = 'Account already exists!'
+            else:
+                cursor.execute(
+                    'INSERT INTO user (name, email, password) VALUES (%s, %s, %s)', (name, email, password))
+                mysql.connection.commit()
+                message = 'Registration successful!'
+
+    return render_template('register.html', message=message)
+
+
+if __name__ == '__main__':
     app.run(debug=True)

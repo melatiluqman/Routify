@@ -1,51 +1,110 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
+/* Reset some basic styles */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    justify-content: flex-start;  /* Membuat konten tidak terlalu berada di tengah */
     height: 100vh;
 }
 
-
-h1 {
-    color: #007BFF;
-    text-align: center;  /* Teks judul akan berada di tengah horizontal */
-    margin: 20px 0;       /* Memberikan jarak di atas dan bawah judul */
+/* Container for login */
+.login-container {
     display: flex;
-    justify-content: center;  /* Mengatur teks di tengah horizontal */
-    align-items: center; 
-}
-
-
-nav {
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    border-bottom: 2px solid #121213; /* Garis bawah navbar */
-    padding: 10px 0;
+    height: 100%;
+}
+
+/* Styling for the login box */
+.login-box {
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+h2 {
+    color: #4CAF50;
+    margin-bottom: 30px;
+}
+
+/* Styling the form elements */
+.form-group {
     margin-bottom: 20px;
-    display: flex;
-    justify-content: flex-end; /* Mengatur item navbar ke kanan */
+    text-align: left;
 }
 
-nav ul li {
-    display: inline;
-    margin: 0 15px;  /* Memberikan jarak antar link */
+label {
+    display: block;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 8px;
 }
 
-nav ul li a {
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin-top: 6px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background-color: #4CAF50;
     color: white;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 10px 20px;
-    border-radius: 5px;
-    background-color: #007BFF;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
 }
 
-nav ul li a:hover {
-    background-color: #0056b3;  /* Memberikan efek hover */
+button:hover {
+    background-color: #45a049;
+}
+
+/* Styling the alert box */
+.alert {
+    color: #e74c3c;
+    background-color: #f8d7da;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+/* Link styling */
+a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive design for small screens */
+@media (max-width: 600px) {
+    .login-box {
+        width: 90%;
+        padding: 20px;
+    }
 }
 

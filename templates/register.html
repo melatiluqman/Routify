@@ -3,11 +3,15 @@
 {% block content %}
 <div class="login-container">
     <div class="login-box">
-        <h2>User Login</h2>
+        <h2>User Registration</h2>
         {% if message %}
             <div class="alert">{{ message }}</div>
         {% endif %}
-        <form action="{{ url_for('login') }}" method="post">
+        <form action="{{ url_for('register') }}" method="post">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" required>
+            </div>
             <div class="form-group">
                 <label for="email">Email:</label>
                 <input type="email" name="email" id="email" required>
@@ -16,9 +20,9 @@
                 <label for="password">Password:</label>
                 <input type="password" name="password" id="password" required>
             </div>
-            <button type="submit">Login</button>
+            <button type="submit">Create account</button>
         </form>
-        <p>Don't have an account? <a href="{{ url_for('register') }}">Create account here</a></p>
+        <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
     </div>
 </div>
 {% endblock %}
