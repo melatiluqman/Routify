@@ -1,6 +1,6 @@
 # Routify
 
-### Folder Structur Plan
+## Folder Structur Plan
 ```
 Routify/
 ├── __pycache__/        # (dibuat secara otomatis setelah menjalankan program)
