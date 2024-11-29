@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="display-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="logo">
+            <h2>Routify</h2>
+        </div>
+        <nav>
+            <ul>
+                <!-- Menu navigasi -->
+                <li><a href="{{ url_for('home') }}" class="{% if request.endpoint == 'home' %}active{% endif %}">Dasbor</a></li>
+                <li><a href="{{ url_for('planner') }}" class="{% if request.endpoint == 'planner' %}active{% endif %}">Planner</a></li>
+                <!-- <li><a href="{{ url_for('profile') }}" class="{% if request.endpoint == 'profile' %}active{% endif %}">Profil</a></li>
+                <li><a href="{{ url_for('settings') }}" class="{% if request.endpoint == 'settings' %}active{% endif %}">Pengaturan</a></li>
+                <li><a href="{{ url_for('history') }}" class="{% if request.endpoint == 'history' %}active{% endif %}">Riwayat</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li> -->
+            </ul>
+        </nav>
+    </aside>
+    
+
+    <main>
+         <!-- Header -->
+         <header class="header {% if 'planner' in request.endpoint %}no-search{% endif %}">
+            {% if 'planner' not in request.endpoint %}
+            <div class="search-container">
+                <input type="text" placeholder="Cari..." class="search-bar">
+            </div>
+            {% endif %}
+            <div class="profile-menu">
+                <div class="profile-icon" onclick="toggleDropdown()">
+                    <img src="{{ url_for('static', filename='images/download.jpg') }}" alt="Profile">
+                </div>
+                <div id="dropdown-menu" class="dropdown hidden">
+                    <p>{{ session.name }}</p>
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                </div>
+            </div>
+        </header>
+        
+        
+        
+        <div class="planner-container">
+            <h1>Welcome to Planner</h1>
+        </div>
+    </main>
+
+</div>
+{% endblock %}

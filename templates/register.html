@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="login-container">
+    <div class="login-box">
+        <h2>User Registration</h2>
+        {% if message %}
+            <div class="alert">{{ message }}</div>
+        {% endif %}
+        <form action="{{ url_for('register') }}" method="post">
+            <div class="form-group">
+                <label for="name">Username:</label>
+                <input type="text" name="name" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Number Phone:</label>
+                <input type="tel" name="phone" id="phone"  pattern="[0-9]{10,15}" required>
+            </div>
+            <div class="form-group" style="margin-bottom: 20px;">
+                <label for="country">Country:</label>
+                <select name="country" id="country" required>
+                    <option value="">Select Country</option>
+                    <option value="Indonesia">Indonesia</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="city">City:</label>
+                <select name="city" id="city" required>
+                    <option value="">Select City</option>
+                    <option value="Jakarta">Jakarta</option>
+                    <option value="Surabaya">Surabaya</option>
+                    <option value="Bandung">Bandung</option>
+                    <option value="Medan">Medan</option>
+                    <option value="Denpasar">Denpasar</option>
+                </select>
+            </div>
+            
+            <button type="submit">Create account</button>
+        </form>
+        <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+    </div>
+</div>
+{% endblock %}

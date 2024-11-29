@@ -1,0 +1,403 @@
+/* Reset some basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+
+/* BAGIAN LOGIN DAN REGISTER */
+
+/* Container for login */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    width: 100%;
+    height: 100%;
+}
+
+/* Styling for the login box */
+.login-box {
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    /* text-align: center; */
+}
+
+h2 {
+    color: #4CAF50;
+    margin-bottom: 20px;
+    text-align: center;
+    padding-top: 5px;
+}
+
+/* Styling the form elements */
+.form-group {
+    margin-bottom: 15px; 
+    text-align: left;
+}
+
+label, select {
+    display: block;
+    font-size: 14px;
+    color: #555;
+    /* margin-top: 8px;
+    margin-bottom: 8px; */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+select {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    /* margin-bottom: 2px;  */
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Styling the alert box */
+.alert {
+    color: #e74c3c;
+    background-color: #f8d7da;
+    padding: 5px;
+    margin: 10px ;
+    border-radius: 4px;
+}
+
+/* Link styling */
+a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive design for small screens */
+@media (max-width: 600px) {
+    .login-box {
+        width: 90%;
+        padding: 20px;
+    }
+}
+
+
+/* BAGIAN DISPLAY */
+/* Atur container utama agar full layar */
+.display-container {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    height: 100vh; /* Membuat tinggi container sesuai layar */
+    width: 100vw;  /* Membuat lebar container sesuai layar */
+}
+
+/* Konten Utama */
+main {
+    background: white;
+    /* margin: 10px; */
+    /* padding: 20px; */
+    overflow-y: auto; 
+}
+
+/*BAGIAN SIDEBAR */
+/* Sidebar kiri */
+.sidebar {
+    background: #4CAF50;
+    color: rgb(128, 22, 22);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    /* margin: 0 5px;  */
+    border-radius: 5px;
+}
+
+.sidebar .logo {
+    text-align: center;
+    margin: 20px;
+    
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.sidebar nav ul li {
+    margin: 20px 0;
+}
+
+.sidebar nav ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 7px 50px;
+    border-radius: 10px;
+    transition: background 0.3s;
+}
+
+.sidebar nav ul li a.active,
+.sidebar nav ul li a:hover {
+    background: #b3f8b79d;
+}
+
+.logo h2 {
+    color: #b3f8b79d;
+    margin-bottom: 20px;
+    text-align: center;
+    padding-top: 5px;
+}
+
+
+/*BAGIAN HEADER*/
+/* Header container */
+.header {
+    display: flex;
+    justify-content: flex-end; /* Elemen ke kanan secara default */
+    align-items: center;
+    padding: 10px 20px;
+    margin-right: 25px;
+
+}
+
+/* Search bar (khusus jika ada) */
+.search-container {
+    flex: 1; /* Atur agar search bar mengisi ruang 50% */
+    margin: 20px auto; /* Menyelaraskan ke tengah */
+    display: flex;
+    justify-content: center;
+    /* box-shadow: 0 0 0 1px rgba(0,0,0,0.2); */
+    
+}
+
+.search-bar {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px 20px;
+    border: 20px solid #ddd;
+    font-size: 14px;
+    /* box-sizing: border-box; */
+    display: flex;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.2);
+}
+
+
+
+/* Profile menu tetap di kanan */
+.profile-menu {
+    position: relative;
+    margin-left: auto; /* Pastikan elemen di kanan */
+
+}
+
+.profile-icon {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.profile-icon img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+}
+
+
+/* Dropdown menu */
+.dropdown {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 4px;
+    z-index: 1000;
+    display: none; /* Hidden by default */
+}
+
+.dropdown p {
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+}
+
+.dropdown a {
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #007BFF;
+    font-size: 14px;
+}
+
+.dropdown a:hover {
+    text-decoration: underline;
+}
+
+/* Show dropdown when active */
+.dropdown.active {
+    display: block;
+}
+
+
+
+
+/* DASBOR CONTAINER */
+.dasbor-container{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+
+
+
+/* BAGIAN PLANNER */
+.planner-container{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.header.no-search {
+    justify-content: flex-end; /* Hanya profil di kanan */
+    margin-right: 25px;
+    margin-top:18px;
+
+}
+
+.header.no-search .search-container {
+    display: none; /* Hilangkan elemen search */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /* .header-icons a {
+    margin-left: 15px;
+    font-size: 1.2em;
+    color: #45a049;
+}  */
+
+/* .cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.card h3 {
+    margin: 10px 0;
+} */
+/* 
+Sidebar kanan 
+.sidebar-right {
+    background: #f4f7f6;
+    color: black;
+    padding: 20px;
+    height: 100%; Memastikan sidebar kanan mengisi penuh tinggi layar 
+}
+
+.user-profile {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.popular-places h4 {
+    margin-bottom: 10px;
+}
+
+.popular-places ul {
+    list-style: none;
+    padding: 0;
+}
+
+.popular-places ul li {
+    margin: 5px 0;
+    color: black;
+} */
