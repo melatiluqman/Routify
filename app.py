@@ -3,8 +3,8 @@ from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import re
 from config import Config
-from utils.a_star import a_star_search
-from utils.csp import str_to_time, can_visit
+# from utils.a_star import a_star_search
+# from utils.csp import str_to_time, can_visit
 
 # Initialize Flask app
 app = Flask(__name__)
