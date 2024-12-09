@@ -3,6 +3,8 @@ from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import re
 from config import Config
+from utils.a_star import a_star_search
+from utils.csp import str_to_time, can_visit
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -92,9 +94,52 @@ def register():
 def home():
     return render_template('home.html')
 
-@app.route('/planner')
+@app.route('/planner', methods=['GET', 'POST'])
 def planner():
-    return render_template('planner.html')
+    if request.method == 'POST':
+        # Ambil data input pengguna
+        departure_time = request.form.get('departure_time')
+        return_time = request.form.get('return_time')
+        start_point = request.form.get('start_point')
+        end_point = request.form.get('end_point')
+        transport_method = request.form['transport_method']
+        destination1 = request.form.get('destination1')
+        destination2 = request.form.get('destination2')
+        destination3 = request.form.get('destination3')
+        budget = request.form.get('budget')
+
+
+        # Filter destinasi yang diisi (non-kosong)
+        destinations = [d for d in [destination1, destination2, destination3] if d.strip()]  # Hilangkan spasi kosong
+
+        # Periksa apakah minimal ada satu destinasi
+        if not destinations:
+            return render_template(
+                'planner.html',
+                error_message="Setidaknya satu destinasi harus diisi.",
+                route=None,
+                estimated_time=None
+            )
+
+        # Jalankan algoritma (contoh a_star)
+        try:
+            from utils.a_star import a_star_algorithm
+            route, estimated_time = a_star_algorithm(
+                start_point=start_point,
+                destinations=destinations,
+                end_point=end_point,
+                departure_time=departure_time,
+                return_time=return_time
+            )
+        except ImportError:
+            route = []
+            estimated_time = "Error: Algorithm not found."
+
+        # Tampilkan hasil
+        return render_template('planner.html', route=route, estimated_time=estimated_time)
+
+    return render_template('planner.html', error_message=None, route=None, estimated_time=None)
+
 
 @app.route('/profile')
 def profile():

@@ -44,9 +44,55 @@
         
         
         <div class="planner-container">
-            <h1>Welcome to Planner</h1>
-        </div>
-    </main>
+            <form method="POST" action="{{ url_for('planner') }}">
+                <label for="departure_time">Waktu Keberangkatan hehe:</label>
+                <input type="time" id="departure_time" name="departure_time" required>
+            
+                <label for="return_time">Waktu Pulang:</label>
+                <input type="time" id="return_time" name="return_time" required>
+            
+                <label for="start_point">Titik Awal Keberangkatan:</label>
+                <input type="text" id="start_point" name="start_point" placeholder="Contoh: Rumah" required>
+            
+                <label for="end_point">Titik Akhir Kepulangan:</label>
+                <input type="text" id="end_point" name="end_point" placeholder="Contoh: Rumah" required>
+                
+                <label for="transport_method">Transportasi:</label>
+                <select name="transport_method">
+                    <option value="car">Car</option>
+                    <option value="motorCycle">MotorCycle</option>
+                    <option value="walking">Walking</option>
+                </select>
+                
+                <label for="destination1">Destinasi 1:</label>
+                <input type="text" id="destination1" name="destination1" placeholder="Contoh: Taman" required>
+            
+                <label for="destination2">Destinasi 2 (Opsional):</label>
+                <input type="text" id="destination2" name="destination2">
+            
+                <label for="destination3">Destinasi 3 (Opsional):</label>
+                <input type="text" id="destination3" name="destination3">
 
+                <label for="budget">Budget:</label>
+                <input type="text" id="budget" name="budget">
+            
+                <button type="submit">Submit</button>
+            </form>            
+        </div>
+        <div>
+            <h2>Rencana Perjalanan</h2>
+            {% if route %}
+                <p><strong>Rute:</strong> {{ route | join(' -> ') }}</p>
+                <p><strong>Estimasi Waktu:</strong> {{ estimated_time }} menit</p>
+            {% else %}
+                <p>Belum ada rencana perjalanan. Silakan isi form di atas.</p>
+            {% endif %}
+        </div>
+        {% if error_message %}
+        <div class="error">
+            <p>{{ error_message }}</p>
+        </div>
+        {% endif %}
+    </main>
 </div>
 {% endblock %}
